@@ -3,7 +3,7 @@
 #include <string>
 
 // Encrypt text using caesar cipher
-std::string encrypt_caesar_cipher(std::string text) {
+std::string encrypt_caesar_cipher(std::string text, int shifts = 3) {
     std::string letters = "abcdefghijklmnopqrstuvwxyz";
     std::transform(text.begin(), text.end(), text.begin(), ::tolower);
 
@@ -19,7 +19,7 @@ std::string encrypt_caesar_cipher(std::string text) {
                     text[i] = 'c';
                 } else {
                     // Replace letter with third next letter
-                    text[i] = letters[j + 3];
+                    text[i] = letters[j + shifts];
                 }
                 break;
             }
@@ -30,7 +30,7 @@ std::string encrypt_caesar_cipher(std::string text) {
 }
 
 // Decrypt text using caesar cipher
-std::string decrypt_caesar_cipher(std::string text) {
+std::string decrypt_caesar_cipher(std::string text, int shifts = 3) {
     std::string letters = "abcdefghijklmnopqrstuvwxyz";
     std::transform(text.begin(), text.end(), text.begin(), ::tolower);
 
@@ -46,7 +46,7 @@ std::string decrypt_caesar_cipher(std::string text) {
                     text[i] = 'z';
                 } else {
                     // Replace letter with third previous letter
-                    text[i] = letters[j - 3];
+                    text[i] = letters[j - shifts];
                 }
                 break;
             }
