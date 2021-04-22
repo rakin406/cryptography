@@ -16,6 +16,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable(caesar_cipher src/caesar_cipher.cpp)
+add_executable(xor src/xor.cpp)
 
 # Warning flags
 target_compile_options(caesar_cipher PRIVATE
