@@ -40,9 +40,9 @@ std::string decrypt_caesar_cipher(std::string text, int shifts = 3) {
                 result += mod_char;
             } else {
                 if (std::isupper(text[i])) {
-                    result += (int)'Z' - ((int)'A' - mod_char) - 1;
+                    result += (int)'Z' - ((int)'A' - mod_char) + 1;
                 } else {
-                    result += (int)'z' - ((int)'a' - mod_char) - 1;
+                    result += (int)'z' - ((int)'a' - mod_char) + 1;
                 }
             }
         } else {
@@ -54,11 +54,7 @@ std::string decrypt_caesar_cipher(std::string text, int shifts = 3) {
 }
 
 int main() {
-    // std::cout << encrypt_caesar_cipher("zebra") << "\n";
-    // std::cout << encrypt_caesar_cipher("good JOB") << "\n";
-    // std::cout << encrypt_caesar_cipher(" ") << "\n";
-    std::cout << decrypt_caesar_cipher("jrrg mre") << "\n";
-    std::cout << decrypt_caesar_cipher("JRRG MRE") << "\n";
-    std::cout << decrypt_caesar_cipher(" .") << "\n";
+    std::cout << encrypt_caesar_cipher("Zebra") << "\n";
+    std::cout << decrypt_caesar_cipher("Cheud") << "\n";
     return 0;
 }
