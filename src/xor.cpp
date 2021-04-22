@@ -29,5 +29,7 @@ std::string xor_cipher(std::string text, std::string key) {
 }
 
 int main() {
+    std::string text = "<2%(N5J*";
+    std::cout << xor_cipher(text, "tp^IGnb{8lN") << "\n";
     return 0;
 }
