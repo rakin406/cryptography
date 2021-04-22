@@ -10,10 +10,15 @@ std::string encrypt_caesar_cipher(std::string text, int shifts = 3) {
     for (int i = 0; i < text.size(); ++i) {
         if (std::isalpha(text[i])) {
             char mod_char = text[i] + (char)shifts;
-            if (mod_char > 64 && mod_char < 123) {
+            if ((std::islower(text[i]) && mod_char <= 'z') ||
+                (std::isupper(text[i]) && mod_char <= 'Z')) {
                 result += mod_char;
             } else {
-                result += (char)64 + (mod_char - (char)122);
+                if (std::isupper(text[i])) {
+                    result += (char)64 + (mod_char - (char)90);
+                } else {
+                    result += (char)96 + (mod_char - (char)122);
+                }
             }
         } else {
             result += text[i];
