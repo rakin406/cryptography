@@ -3,9 +3,10 @@
 #include <string>
 
 // Generate random integer in range
-int generate_random(const int &min, const int &max) {
-    static thread_local std::mt19937 generator;
-    std::uniform_int_distribution<int> dist(min, max);
+int generate_random(int min, int max) {
+    std::random_device rd;        // obtain a random number from hardware
+    std::mt19937 generator(rd()); // seed the generator
+    std::uniform_int_distribution<> dist(min, max); // define the range
     return dist(generator);
 }
 
