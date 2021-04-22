@@ -3,63 +3,38 @@
 #include <iostream>
 #include <string>
 
-// Encrypt text using caesar cipher
-std::string encrypt_caesar_cipher(std::string plaintext, int shifts = 3) {
-    std::string ciphertext = "";
+// Encrypt and decrypt text using caesar cipher
+std::string caesar_cipher(std::string text, int shifts = 3) {
+    std::string result = "";
 
-    for (int i = 0; i < plaintext.size(); ++i) {
-        if (std::isalpha(plaintext[i])) {
-            char mod_char = plaintext[i] + (char)shifts;
-            if ((std::islower(plaintext[i]) && mod_char <= 'z') ||
-                (std::isupper(plaintext[i]) && mod_char <= 'Z')) {
-                ciphertext += mod_char;
+    for (int i = 0; i < text.size(); ++i) {
+        if (std::isalpha(text[i])) {
+            char mod_char = text[i] + (char)shifts;
+            if ((std::islower(text[i]) && mod_char <= 'z') ||
+                (std::isupper(text[i]) && mod_char <= 'Z')) {
+                result += mod_char;
             } else {
-                if (std::isupper(plaintext[i])) {
-                    ciphertext += (int)'A' + (mod_char - (int)'Z') - 1;
+                if (std::isupper(text[i])) {
+                    result += (int)'A' + (mod_char - (int)'Z') - 1;
                 } else {
-                    ciphertext += (int)'a' + (mod_char - (int)'z') - 1;
+                    result += (int)'a' + (mod_char - (int)'z') - 1;
                 }
             }
         } else {
-            ciphertext += plaintext[i];
+            result += text[i];
         }
     }
 
-    return ciphertext;
-}
-
-// Decrypt text using caesar cipher
-std::string decrypt_caesar_cipher(std::string ciphertext, int shifts = 3) {
-    std::string plaintext = "";
-
-    for (int i = 0; i < ciphertext.size(); ++i) {
-        if (std::isalpha(ciphertext[i])) {
-            char mod_char = ciphertext[i] - (char)shifts;
-            if ((std::islower(ciphertext[i]) && mod_char >= 'a') ||
-                (std::isupper(ciphertext[i]) && mod_char >= 'A')) {
-                plaintext += mod_char;
-            } else {
-                if (std::isupper(ciphertext[i])) {
-                    plaintext += (int)'Z' - ((int)'A' - mod_char) + 1;
-                } else {
-                    plaintext += (int)'z' - ((int)'a' - mod_char) + 1;
-                }
-            }
-        } else {
-            plaintext += ciphertext[i];
-        }
-    }
-
-    return plaintext;
+    return result;
 }
 
 int main() {
-    std::string ciphertext = encrypt_caesar_cipher("Caesar cipher", 6);
+    std::string ciphertext = caesar_cipher("Caesar cipher", 6);
     std::cout << ciphertext << "\n";
 
     // Brute force caesar cipher decryption
     for (int i = 1; i < 26; ++i) {
-        std::cout << decrypt_caesar_cipher(ciphertext, i) << "\n";
+        std::cout << caesar_cipher(ciphertext, i) << "\n";
     }
 
     return 0;
