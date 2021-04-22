@@ -39,7 +39,7 @@ std::string vigenere_cipher(std::string plaintext, std::string key) {
 }
 
 int main() {
-    std::string ciphertext = vigenere_cipher("Vigenere cipher", "KEY");
+    std::string ciphertext = vigenere_cipher("Vigenere cipher", "ABC");
     std::cout << ciphertext << "\n";
 
     return 0;
