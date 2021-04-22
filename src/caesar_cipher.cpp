@@ -54,7 +54,13 @@ std::string decrypt_caesar_cipher(std::string ciphertext, int shifts = 3) {
 }
 
 int main() {
-    std::cout << encrypt_caesar_cipher("Zebra") << "\n";
-    std::cout << decrypt_caesar_cipher("Cheud") << "\n";
+    std::string ciphertext = encrypt_caesar_cipher("Caesar cipher", 6);
+    std::cout << ciphertext << "\n";
+
+    // Brute force caesar cipher decryption
+    for (int i = 1; i < 26; ++i) {
+        std::cout << decrypt_caesar_cipher(ciphertext, i) << "\n";
+    }
+
     return 0;
 }
