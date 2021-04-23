@@ -5,19 +5,21 @@
 
 // Encrypt and decrypt text using caesar cipher
 std::string caesar_cipher(std::string text, int shifts = 3) {
-    std::string result = "";
+    std::string result;
 
     for (int i = 0; i < text.size(); ++i) {
-        if (std::isalpha(text[i])) {
+        if (std::isalpha(text[i]) != 0) {
             char mod_char = text[i] + (char)shifts;
-            if ((std::islower(text[i]) && mod_char <= 'z') ||
-                (std::isupper(text[i]) && mod_char <= 'Z')) {
+            if (((std::islower(text[i]) != 0) && mod_char <= 'z') ||
+                ((std::isupper(text[i]) != 0) && mod_char <= 'Z')) {
                 result += mod_char;
             } else {
-                if (std::isupper(text[i])) {
-                    result += (int)'A' + (mod_char - (int)'Z') - 1;
+                if (std::isupper(text[i]) != 0) {
+                    result +=
+                        std::to_string((int)'A' + (mod_char - (int)'Z') - 1);
                 } else {
-                    result += (int)'a' + (mod_char - (int)'z') - 1;
+                    result +=
+                        std::to_string((int)'a' + (mod_char - (int)'z') - 1);
                 }
             }
         } else {

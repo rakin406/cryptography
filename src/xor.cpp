@@ -1,6 +1,7 @@
 #include <iostream>
 #include <random>
 #include <string>
+#include <utility>
 
 // Generate random integer in range
 int generate_random(int min, int max) {
@@ -12,7 +13,7 @@ int generate_random(int min, int max) {
 
 // Generate random key with given length
 std::string generate_key(int length) {
-    std::string key = "";
+    std::string key;
     for (int i = 0; i < length; ++i) {
         key += (char)generate_random(33, 126);
     }
@@ -21,14 +22,19 @@ std::string generate_key(int length) {
 
 // Encrypt and decrypt text with XOR cipher technique
 std::string xor_cipher(std::string text, std::string key) {
-    std::string result = text;
-    for (int i = 0; i < text.size(); ++i) {
-        result[i] = text[i] ^ key[i % key.size()];
+    std::string result = std::move(text);
+    for (int i = 0; i < result.size(); ++i) {
+        result[i] ^= key[i % key.size()];
     }
     return result;
 }
 
 int main() {
-    std::cout << xor_cipher("<2%(N5J*", "tp^IGnb{8lN") << "\n";
+    std::string text = "Hello World";
+    std::string key = generate_key(text.size());
+    std::cout << key << "\n";
+    std::cout << xor_cipher(text, key) << "\n";
+    // std::cout << xor_cipher("Hello", "KEY") << "\n";
+    // std::cout << xor_cipher(" 5'*", "KEY") << "\n";
     return 0;
 }
