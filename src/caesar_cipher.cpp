@@ -5,6 +5,7 @@
 
 // Encrypt and decrypt text using caesar cipher
 std::string caesar_cipher(std::string text, int shifts = 3) {
+    // TODO: Does not work for some letters such as 't'
     std::string result;
 
     for (int i = 0; i < text.size(); ++i) {

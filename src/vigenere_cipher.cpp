@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+// TODO: Add decryption function
+
 // Encrypt text using vigenere cipher
 std::string vigenere_cipher(std::string plaintext, std::string key) {
     std::string ciphertext;

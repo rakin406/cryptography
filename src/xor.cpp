@@ -22,6 +22,7 @@ std::string generate_key(int length) {
 
 // Encrypt and decrypt text with XOR cipher technique
 std::string xor_cipher(std::string text, std::string key) {
+    // TODO: Result must be of the same length as the key
     std::string result = std::move(text);
     for (int i = 0; i < result.size(); ++i) {
         result[i] ^= key[i % key.size()];
